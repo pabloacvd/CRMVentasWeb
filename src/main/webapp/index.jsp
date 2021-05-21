@@ -10,11 +10,15 @@
 <body>
 <h1>Buscar clientes</h1>
 <br/>
+<%
+    if(request.getParameter("guardar")!=null && request.getParameter("guardar").equals("ok"))
+        out.println("<hr/>Cliente guardado en la base de datos!<hr/>");
+%>
 <form action="buscarServlet" method="get">
     <input type="search" name="nombreCliente" />
     <br /><br />
     <button type="submit">Buscar</button>
 </form>
-<!--<a href="hello-servlet">Hello Servlet</a>-->
+<br /><br />
 </body>
 </html>

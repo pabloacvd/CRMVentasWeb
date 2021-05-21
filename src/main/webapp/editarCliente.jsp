@@ -26,13 +26,13 @@
     <title>CRMVentas - <%= (idClienteTexto.isEmpty())?"Crear":"Editar"%> cliente</title>
     <style>
         body{padding: 15px;background-color: beige;}
-        form{width: fit-content;}
-        form input{margin-right: 5px;}
+        form{width: fit-content;text-align: right;}
+        form input{padding: 3px;}
     </style>
 </head>
 <body>
   <h1><%= (idClienteTexto.isEmpty())?"Crear":"Editar"%> cliente</h1>
-<form>
+<form action="guardarClienteServlet" method="post">
     <label>ID Cliente: </label><input type="text" name="idCliente" value="<%=idClienteTexto%>" disabled><br /><br />
     <label>Nombre: </label><input type="text" name="nombre" value="<%=nombreCliente%>"><br /><br />
     <label>Empresa: </label><input type="text" name="empresa" value="<%=empresa%>"><br /><br />
