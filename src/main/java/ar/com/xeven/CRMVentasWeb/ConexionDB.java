@@ -12,7 +12,7 @@ public class ConexionDB {
     private String dbPWD;
 
     public ConexionDB(String dbName, String dbUSER, String dbPWD) {
-        this.dbURL = "jdbc:mysql://localhost/"+dbName;
+        this.dbURL = "jdbc:mysql://localhost:3306/"+dbName;
         this.dbUSER = dbUSER;
         this.dbPWD = dbPWD;
         iniciarConexion();
