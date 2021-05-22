@@ -1,7 +1,5 @@
 package ar.com.xeven.CRMVentasWeb;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
 
 public class ClienteDAO {
@@ -19,24 +17,6 @@ public class ClienteDAO {
 
     public static Cliente buscarPorNombre(String nombreCliente) {
         Cliente cliente = new Cliente();
-
-        try {
-            //TODO en la siguiente linea pongan sus datos
-            ConexionDB conexionDB = new ConexionDB("crmventas", "root", "unafacil");
-            // Acá no usé un prepared statement, directamente paso la query -> NO hagan esto en sus casas!
-            ResultSet rs = conexionDB.consultar("SELECT * FROM clientes WHERE nombre LIKE '%" + nombreCliente + "%'");
-            if (rs != null)
-                while (rs.next()) {
-                    cliente.setIdCliente(rs.getInt("idCliente"));
-                    cliente.setNombre(rs.getString("nombre"));
-                    cliente.setCargo(rs.getString("cargo"));
-                    cliente.setEmpresa(rs.getString("empresa"));
-                    cliente.setMail(rs.getString("mail"));
-                    cliente.setTelefono(rs.getString("telefono"));
-                }
-            conexionDB.cerrar();
-        }catch (SQLException e){ e.printStackTrace(); }
-
         cliente.setNombre(nombreCliente);
         cliente.setCargo("un cargo");
         cliente.setEmpresa("una empresa");
@@ -47,5 +27,12 @@ public class ClienteDAO {
 
     public static void guardarCliente(Cliente unCliente) {
         // este método guarda clientes
+    }
+
+    public static Cliente buscarPorID(Integer idCliente) {
+        Cliente cliente = new Cliente(
+                idCliente, "nombre de mentira", "un cargo", "empresa falsa", "1234", "mail falso"
+        );
+        return cliente;
     }
 }
